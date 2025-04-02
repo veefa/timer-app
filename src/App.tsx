@@ -4,8 +4,8 @@ import Timer from "./Timer";
 
 const App: React.FC = () => {
   return (
-    <div className="">
-      <Timer/>
+    <div className="flex justify-center items-center bg-gray-100 h-screen">
+      <Timer />
     </div>
   );
 };
