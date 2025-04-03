@@ -76,14 +76,14 @@ const Timer: React.FC = () => {
            {/* Timer control*/}
             <div className="space-x-4">
                 <button onClick={() => setIsRunning(!isRunning)}
-                    className="bg-blue-400 px-6 py-3 rounded-lg text-white">
+                    className="bg-blue-400 hover:bg-blue-300 px-6 py-3 rounded-lg text-white">
                     {isRunning ? "Pause" : "Start"}
                 </button>
                 <button onClick={() => {
                     setIsRunning(false);
                     setTimeLeft(mode === "work" ? sessionLength * 60 : breakLength * 60); // Reset properly
                 }}
-                    className="bg-red-700 px-5 py-3 rounded-lg text-white"
+                    className="bg-red-700 hover:bg-red-300 px-5 py-3 rounded-lg text-white"
                 >
                     Reset
                 </button>
