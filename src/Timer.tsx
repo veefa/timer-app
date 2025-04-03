@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+
 const Timer: React.FC = () => {
-    const [timeLeft, setTimeLeft] = useState<number>(25 * 60)   //Initializes timeLeft
+    const [timeLeft, setTimeLeft] = useState<number>(5 * 60)   //Initializes timeLeft
     const [isRunning, setIsRunning] = useState<boolean>(false);  // Tracks if the timer is running
+
 
     //  Start/Pause functionality
     useEffect(() => {
@@ -11,8 +13,9 @@ const Timer: React.FC = () => {
             timer = setInterval(() => {
                 setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);  //1000ms
-        } else {
-            clearInterval(timer);
+        } else if (timeLeft === 0) {
+            const alarmSound = new Audio("./public/notification.mp3")
+            alarmSound.play();
         }
         //Preventing Multiple Intervals (Reset button)
         return () => clearInterval(timer);}
@@ -35,7 +38,7 @@ const Timer: React.FC = () => {
                 </button>
                 <button onClick={() => {
                     setIsRunning(false);
-                    setTimeLeft(25 * 60);
+                    setTimeLeft(5 * 60);
                     }}
                     className="bg-red-700 px-5 py-3 rounded-lg text-gray-100"
                 >
