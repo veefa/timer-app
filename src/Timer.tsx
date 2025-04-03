@@ -6,6 +6,7 @@ const Timer: React.FC = () => {
     const [mode, setMode] = useState<"work" | "break">("work");
     const [breakLength, setBreakLength] = useState<number>(5); // Default: 5 min break
     const [sessionLength, setSessionLength] = useState<number>(25); // Default: 25 min
+    
 
     //  Start/Pause functionality
     useEffect(() => {
@@ -42,7 +43,7 @@ const Timer: React.FC = () => {
         <div className="flex flex-col justify-center items-center space-y-4">
             <h1 className="py-1 font-bold text-gray-600 text-5xl">{formatTime(timeLeft)}</h1>
             <p className="font-semibold text-gray-600 text-lg">{mode === "work" ? "Work Time" : "Break Time"}</p>
-
+            
             {/* Work & Break Length Input */}
             <div className="flex space-x-4 py-3">
                 <div>
