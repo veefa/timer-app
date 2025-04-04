@@ -47,7 +47,7 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
     // Added darkMode class to apply conditional styles
     <div
       className={`flex flex-col justify-center items-center space-y-4 p-4 transition-all ${
-        darkMode ? " text-gray-100" : " text-gray-700"
+        darkMode ? " text-gray-300" : " text-gray-700"
       }`}
     >
       <h1 className="py-1 font-bold text-5xl">{formatTime(timeLeft)}</h1>
@@ -65,7 +65,7 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
               setSessionLength(value);
               if (!isRunning && mode === "work") setTimeLeft(value * 60);
             }}
-            className="p-2 border border-gray-300 rounded w-20 text-gray-500"
+            className={` p-2 shadow border border-gray-300 rounded w-20  ${darkMode ? "text-gray-600 bg-gray-300 " : "text-gray-500 bg-gray-100"}`}
           />
         </div>
         <div>
@@ -78,7 +78,7 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
               setBreakLength(value);
               if (!isRunning && mode === "break") setTimeLeft(value * 60);
             }}
-            className="p-2 border border-gray-300 rounded w-20 text-gray-500"
+            className= {` p-2 shadow border border-gray-300 rounded w-20  ${darkMode ? "text-gray-600 bg-gray-300 " : "text-gray-500 bg-gray-100"}`}
           />
         </div>
       </div>
@@ -87,7 +87,7 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
       <div className="space-x-4">
         <button
           onClick={() => setIsRunning(!isRunning)}
-          className="bg-blue-400 hover:bg-blue-300 px-6 py-3 rounded-lg text-white"
+          className="bg-blue-400 hover:bg-blue-300 px-6 py-3 rounded-lg text-gray-200"
         >
           {isRunning ? "Pause" : "Start"}
         </button>
@@ -96,7 +96,7 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
             setIsRunning(false);
             setTimeLeft(mode === "work" ? sessionLength * 60 : breakLength * 60); // Reset properly
           }}
-          className="bg-red-700 hover:bg-red-300 px-5 py-3 rounded-lg text-white"
+          className="bg-red-700 hover:bg-red-300 px-5 py-3 rounded-lg text-gray-200"
         >
           Reset
         </button>

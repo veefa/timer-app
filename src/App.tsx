@@ -17,7 +17,7 @@ const App: React.FC = () => {
   return (
     <div
       className={`flex justify-center items-center h-screen transition-all ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-red-200"
+        darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-200"
       }`}
     >
       {/* Dark Mode Toggle */}
@@ -35,3 +35,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
