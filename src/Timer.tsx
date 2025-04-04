@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimeInputs from "./TimerInputs";
 import TimerControls from "./TimerControls";
+import ProgressBar from "./ProgressBar";
 
 // Accept darkMode as a prop to control theme changes
 interface TimerProps {
@@ -50,6 +51,11 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
       }`}
         >
       <TimerDisplay timeLeft={timeLeft} mode={mode} darkMode={darkMode} />
+      <ProgressBar
+      timeLeft={timeLeft}
+      totalTime={mode === "work" ? sessionLength * 60 : breakLength * 60}
+      darkMode={darkMode}
+      />
 
       {/* Work & Break Length Input */}
       <TimeInputs
