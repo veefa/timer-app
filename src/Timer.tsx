@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import TimerDisplay from "./TimerDisplay";
+import TimeInputs from "./TimerInputs";
 
 // Accept darkMode as a prop to control theme changes
 interface TimerProps {
@@ -37,11 +39,7 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
   }, [isRunning, timeLeft, mode, breakLength, sessionLength]);
 
   // Converts seconds into mm:ss format
-  const formatTime = (seconds: number): string => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-  };
+
 
   return (
     // Added darkMode class to apply conditional styles
@@ -49,39 +47,20 @@ const Timer: React.FC<TimerProps> = ({ darkMode }) => {
       className={`flex flex-col justify-center items-center space-y-4 p-4 transition-all ${
         darkMode ? " text-gray-300" : " text-gray-700"
       }`}
-    >
-      <h1 className="py-1 font-bold text-5xl">{formatTime(timeLeft)}</h1>
-      <p className="font-semibold text-lg">{mode === "work" ? "Work Time" : "Break Time"}</p>
+        >
+      <TimerDisplay timeLeft={timeLeft} mode={mode} darkMode={darkMode} />
 
       {/* Work & Break Length Input */}
-      <div className="flex space-x-4 py-3">
-        <div>
-          <label className="block font-medium text-gray-500">Work Session:</label>
-          <input
-            type="number"
-            value={sessionLength}
-            onChange={(e) => {
-              const value = Number(e.target.value);
-              setSessionLength(value);
-              if (!isRunning && mode === "work") setTimeLeft(value * 60);
-            }}
-            className={` p-2 shadow border border-gray-300 rounded w-20  ${darkMode ? "text-gray-600 bg-gray-300 " : "text-gray-500 bg-gray-100"}`}
-          />
-        </div>
-        <div>
-          <label className="block font-medium text-gray-500">Break Time:</label>
-          <input
-            type="number"
-            value={breakLength}
-            onChange={(e) => {
-              const value = Number(e.target.value);
-              setBreakLength(value);
-              if (!isRunning && mode === "break") setTimeLeft(value * 60);
-            }}
-            className= {` p-2 shadow border border-gray-300 rounded w-20  ${darkMode ? "text-gray-600 bg-gray-300 " : "text-gray-500 bg-gray-100"}`}
-          />
-        </div>
-      </div>
+      <TimeInputs
+        sessionLength={sessionLength}
+        breakLength={breakLength}
+        setSessionLength={setSessionLength}
+        setBreakLength={setBreakLength}
+        mode={mode}
+        isRunning={isRunning}
+        setTimeLeft={setTimeLeft}
+        darkMode={darkMode}
+      />
 
       {/* Timer control */}
       <div className="space-x-4">
