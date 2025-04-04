@@ -17,13 +17,13 @@ const App: React.FC = () => {
   return (
     <div
       className={`flex justify-center items-center h-screen transition-all ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100"
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-red-200"
       }`}
     >
       {/* Dark Mode Toggle */}
       <button
         onClick={() => setDarkMode(!darkMode)}
-        className="top-5 right-5 absolute bg-gray-900 px-2 py-2 rounded-lg text-gray-300"
+        className="top-5 right-5 absolute px-2 py-2 rounded-lg text-gray-500"
       >
         {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
       </button>
